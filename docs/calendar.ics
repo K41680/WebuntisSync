@@ -4,26 +4,6 @@ PRODID:-//WebUntis Sync//webuntis-sync//EN
 X-WR-CALNAME:WebUntis Timetable
 X-WR-TIMEZONE:Europe/Brussels
 BEGIN:VEVENT
-SUMMARY:Programming principles
-DTSTART;TZID=Europe/Brussels:20251113T110000
-DTEND;TZID=Europe/Brussels:20251113T130000
-UID:514584-20251113-1100@webuntis-sync
-DESCRIPTION:Dams\n1IT1a / 1IT1b / 1IT2a / 1IT2b / 1IT3a / 1IT3b / 1IT4a / 
- 1IT4b / 1IT5a / 1IT5b / 1IT6a / 1IT6b / 1IT7a / 1IT7b / 1IT8a / 1IT8b\n---
- -----------------\nℹ️ Theorie
-LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Programming principles
-DTSTART;TZID=Europe/Brussels:20251113T140000
-DTEND;TZID=Europe/Brussels:20251113T160000
-UID:1108772-20251113-1400@webuntis-sync
-DESCRIPTION:Dams\n1IT1a / 1IT1b / 1IT3a / 1IT3b / 1IT4a / 1IT4b\n---------
- -----------\nℹ️ Labo
-LOCATION:00.02.ELL (92) Theorielokaal\, 00.03.ELL (55) Projectlokaal DVG &
-  GDM
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:Discover IT
 DTSTART;TZID=Europe/Brussels:20251114T090000
 DTEND;TZID=Europe/Brussels:20251114T180000
