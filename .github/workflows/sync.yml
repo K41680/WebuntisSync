@@ -8,8 +8,19 @@ permissions:
 
 on:
   schedule:
-    # Sync every hour
-    - cron: "1 */1 * * *"
+    # --- DAY SCHEDULE (Hourly) ---
+    # Runs from 04:00 UTC to 19:00 UTC at minute 1.
+    # This covers Belgium time:
+    # Summer (UTC+2): 06:01 to 21:01
+    # Winter (UTC+1): 05:01 to 20:01
+    - cron: "1 4-19 * * *"
+
+    # --- NIGHT SCHEDULE (Long interval) ---
+    # Runs once at 01:00 UTC at minute 1.
+    # This is 02:01 or 03:01 in Belgium.
+    # This fills the gap between the last evening run and the first morning run.
+    - cron: "1 1 * * *"
+
   workflow_dispatch: # Manual trigger enabled
 
 jobs:
@@ -58,4 +69,5 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add docs/calendar.ics
+          # Only commit if there are changes
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update calendar [skip ci]" && git push)
