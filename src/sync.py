@@ -2,7 +2,7 @@ import os
 import json
 import requests
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from icalendar import Calendar, Event
 import pytz
 
@@ -10,13 +10,17 @@ import pytz
 
 def load_config():
     """Load configuration from environment variables or config.json"""
+    # Check required base vars
     if all(key in os.environ for key in ['WEBUNTIS_SERVER', 'WEBUNTIS_SCHOOL', 'WEBUNTIS_USERNAME', 'WEBUNTIS_PASSWORD']):
         return {
             'server': os.environ['WEBUNTIS_SERVER'],
             'school': os.environ['WEBUNTIS_SCHOOL'],
             'username': os.environ['WEBUNTIS_USERNAME'],
             'password': os.environ['WEBUNTIS_PASSWORD'],
-            'class_id': os.environ.get('WEBUNTIS_CLASS_ID')
+            'class_id': os.environ.get('WEBUNTIS_CLASS_ID'),
+            # Optional: Future semester config
+            'future_class_id': os.environ.get('WEBUNTIS_FUTURE_CLASS_ID'),
+            'switch_date': os.environ.get('SEMESTER_SWITCH_DATE') # Format YYYY-MM-DD
         }
     
     if os.path.exists('config.json'):
@@ -52,12 +56,21 @@ def webuntis_login(config):
     
     return session, result['result']['sessionId']
 
-def get_element_id(session, config, session_id):
-    """Get element ID (class or student)."""
-    if config.get('class_id'):
-        print(f"📚 Using configured class ID: {config['class_id']}")
-        return int(config['class_id']), 1
+def get_element_id(session, config, session_id, override_class_id=None):
+    """
+    Get element ID. 
+    1. If override_class_id is provided, use that.
+    2. Else if config['class_id'] is provided, use that.
+    3. Else auto-detect first class or student.
+    """
+    # Determine which ID string to use
+    target_id_str = override_class_id if override_class_id else config.get('class_id')
+
+    if target_id_str:
+        # print(f"📚 Using Class ID: {target_id_str}")
+        return int(target_id_str), 1
     
+    # Auto-detection fallback
     url = f"https://{config['server']}/WebUntis/jsonrpc.do?school={config['school']}"
     headers = {"Cookie": f"JSESSIONID={session_id}"}
     
@@ -68,7 +81,7 @@ def get_element_id(session, config, session_id):
     
     if 'result' in result and len(result['result']) > 0:
         first_class = result['result'][0]
-        print(f"📚 Found class: {first_class['name']} (ID: {first_class['id']})")
+        print(f"📚 Auto-detected class: {first_class['name']} (ID: {first_class['id']})")
         return first_class['id'], 1
     
     # Try fetching student
@@ -78,21 +91,19 @@ def get_element_id(session, config, session_id):
     
     if 'result' in result and len(result['result']) > 0:
         student = result['result'][0]
-        print(f"👤 Found student: {student.get('name', 'Unknown')} (ID: {student['id']})")
+        print(f"👤 Auto-detected student: {student.get('name', 'Unknown')} (ID: {student['id']})")
         return student['id'], 5
     
     raise Exception("Could not find any Class or Student ID.")
 
 # --- TIMETABLE FETCHING ---
 
-def get_timetable(session, config, session_id, element_id, element_type, start_date, end_date):
+def get_timetable_chunked(session, config, session_id, element_id, element_type, start_date, end_date):
     """Fetch timetable data from WebUntis in chunks"""
     full_timetable = []
     chunk_size = 28 # 4 weeks per chunk
     current_start = start_date
     
-    print(f"🔄 Fetching timetable in chunks from {start_date} to {end_date}...")
-
     while current_start < end_date:
         current_end = min(current_start + timedelta(days=chunk_size), end_date)
         
@@ -147,24 +158,12 @@ def parse_webuntis_time(date_int, time_int):
 # --- MERGING LOGIC HELPER ---
 
 def merge_unique_text(current_text, new_text):
-    """
-    Merges two strings with ' | ' separator, ensuring no duplicates exist.
-    Example: merge('A', 'A') -> 'A'
-    Example: merge('A | B', 'A') -> 'A | B'
-    """
-    if not current_text:
-        return new_text
-    if not new_text:
-        return current_text
-    
-    # Split by separator, strip whitespace, remove empty strings
+    if not current_text: return new_text
+    if not new_text: return current_text
     parts = [p.strip() for p in current_text.split('|') if p.strip()]
     new_parts = [p.strip() for p in new_text.split('|') if p.strip()]
-    
     for part in new_parts:
-        if part not in parts:
-            parts.append(part)
-            
+        if part not in parts: parts.append(part)
     return ' | '.join(parts)
 
 class ProcessedLesson:
@@ -175,22 +174,18 @@ class ProcessedLesson:
         self.start_time = raw_lesson['startTime']
         self.end_time = raw_lesson['endTime']
         
-        # Determine Subject Name (Key for merging)
         subjects = raw_lesson.get('su', [])
         self.subject_name = subjects[0].get('longname') or subjects[0].get('name') if subjects else "Lesson"
         
-        # Use Sets to avoid duplicates when merging
         self.subjects = {su.get('longname') or su.get('name', '') for su in subjects}
         self.teachers = {te.get('longname') or te.get('name', '') for te in raw_lesson.get('te', [])}
         self.rooms = {ro.get('longname') or ro.get('name', '') for ro in raw_lesson.get('ro', [])}
         self.classes = {kl.get('longname') or kl.get('name', '') for kl in raw_lesson.get('kl', [])}
         
-        # Text fields
         self.info = raw_lesson.get('info', '')
         self.lstext = raw_lesson.get('lstext', '') 
         self.subst_text = raw_lesson.get('substText', '')
-        
-        self.code = raw_lesson.get('code', '') # e.g. 'cancelled'
+        self.code = raw_lesson.get('code', '') 
 
     @property
     def start_dt(self):
@@ -201,62 +196,37 @@ class ProcessedLesson:
         return parse_webuntis_time(self.date, self.end_time)
 
     def merge_with(self, other):
-        """Merge details from another overlapping lesson into this one"""
         self.subjects.update(other.subjects)
         self.teachers.update(other.teachers)
         self.rooms.update(other.rooms)
         self.classes.update(other.classes)
-        
-        # Merge text fields using the unique helper
         self.info = merge_unique_text(self.info, other.info)
         self.lstext = merge_unique_text(self.lstext, other.lstext)
         self.subst_text = merge_unique_text(self.subst_text, other.subst_text)
 
 def process_timetable(raw_timetable):
-    """
-    1. Filter cancellations
-    2. Convert to objects
-    3. Merge overlaps (same time, same subject)
-    4. Merge adjacent (same subject/teachers, continuous time)
-    """
-    # 1. Convert to ProcessedLesson objects
     lessons = []
     for raw in raw_timetable:
-        if raw.get('code') == 'cancelled':
-            continue
-        try:
-            lessons.append(ProcessedLesson(raw))
-        except ValueError:
-            continue
+        if raw.get('code') == 'cancelled': continue
+        try: lessons.append(ProcessedLesson(raw))
+        except ValueError: continue
 
-    if not lessons:
-        return []
+    if not lessons: return []
 
-    # Sort primarily by start time
     lessons.sort(key=lambda x: (x.start_dt, x.subject_name))
-
-    # 2. HORIZONTAL MERGE: Combine items at the EXACT SAME time and Subject
     merged_overlaps = {}
     
     for lesson in lessons:
         key = (lesson.start_dt, lesson.end_dt, lesson.subject_name)
-        if key in merged_overlaps:
-            merged_overlaps[key].merge_with(lesson)
-        else:
-            merged_overlaps[key] = lesson
+        if key in merged_overlaps: merged_overlaps[key].merge_with(lesson)
+        else: merged_overlaps[key] = lesson
 
     consolidated_list = sorted(merged_overlaps.values(), key=lambda x: x.start_dt)
-
-    # 3. VERTICAL MERGE: Combine adjacent blocks (e.g. 9-10 and 10-11)
-    if not consolidated_list:
-        return []
+    if not consolidated_list: return []
 
     final_lessons = [consolidated_list[0]]
-
     for current in consolidated_list[1:]:
         previous = final_lessons[-1]
-
-        # Check conditions for merging adjacent blocks
         is_continuous = (previous.end_dt == current.start_dt)
         is_same_content = (
             previous.subject_name == current.subject_name and
@@ -266,10 +236,7 @@ def process_timetable(raw_timetable):
         )
 
         if is_continuous and is_same_content:
-            # Extend the previous lesson's end time
             previous.end_time = current.end_time
-            
-            # Merge text fields uniquely
             previous.info = merge_unique_text(previous.info, current.info)
             previous.lstext = merge_unique_text(previous.lstext, current.lstext)
             previous.subst_text = merge_unique_text(previous.subst_text, current.subst_text)
@@ -283,25 +250,69 @@ def process_timetable(raw_timetable):
 def sync_calendar():
     """Main function"""
     config = load_config()
-    
-    if not config:
-        raise Exception("Configuration not found.")
+    if not config: raise Exception("Configuration not found.")
 
     print("🔐 Logging in...")
     session, session_id = webuntis_login(config)
     
-    print("🔍 Finding element...")
-    element_id, element_type = get_element_id(session, config, session_id)
-    
-    # Date range: 30 days back, 90 days forward
+    # --- DATE CALCULATION ---
     today = datetime.now().date()
-    start_date = today - timedelta(days=30)
-    end_date = today + timedelta(days=90)
     
-    print(f"📅 Fetching raw data {start_date} to {end_date}...")
-    raw_timetable = get_timetable(session, config, session_id, element_id, element_type, start_date, end_date)
+    # 1. Determine Switch Date
+    # Default to 4 weeks from now if not set in Secrets
+    if config.get('switch_date'):
+        try:
+            switch_date = datetime.strptime(config['switch_date'], "%Y-%m-%d").date()
+        except ValueError:
+            print("⚠️ Invalid date format in SEMESTER_SWITCH_DATE. Defaulting to +28 days.")
+            switch_date = today + timedelta(days=28)
+    else:
+        switch_date = today + timedelta(days=28)
+
+    # Define Periods
+    # Period 1: Past 30 days -> Switch Date
+    start_date_current = today - timedelta(days=30)
+    end_date_current = switch_date
+
+    # Period 2: Switch Date -> Future (4 months)
+    start_date_future = switch_date
+    end_date_future = today + timedelta(days=120)
+
+    raw_timetable = []
+
+    # --- FETCH PART 1: CURRENT PERIOD ---
+    # Always uses the standard CLASS_ID
+    print(f"🔍 Fetching CURRENT period (Element: {config.get('class_id')})")
+    print(f"   📅 Range: {start_date_current} to {end_date_current}")
     
-    print(f"⚙️ Processing and merging {len(raw_timetable)} raw items...")
+    element_id_curr, element_type_curr = get_element_id(session, config, session_id)
+    
+    if start_date_current < end_date_current:
+        data_curr = get_timetable_chunked(session, config, session_id, element_id_curr, element_type_curr, start_date_current, end_date_current)
+        raw_timetable.extend(data_curr)
+    
+    # --- FETCH PART 2: FUTURE PERIOD ---
+    # Uses FUTURE_CLASS_ID if set, otherwise falls back to CLASS_ID
+    if start_date_future < end_date_future:
+        future_class_id = config.get('future_class_id')
+        
+        # Decide which ID to use for the future
+        if future_class_id and future_class_id.strip() != "":
+            print(f"🔍 Fetching FUTURE period (Element: {future_class_id})")
+            override_id = future_class_id
+        else:
+            print(f"🔍 Fetching FUTURE period (Continuing with Current Element)")
+            override_id = None # Logic inside get_element_id handles this fallback
+
+        print(f"   📅 Range: {start_date_future} to {end_date_future}")
+
+        # Get the ID (either new one or fallback to current)
+        element_id_fut, element_type_fut = get_element_id(session, config, session_id, override_class_id=override_id)
+        
+        data_fut = get_timetable_chunked(session, config, session_id, element_id_fut, element_type_fut, start_date_future, end_date_future)
+        raw_timetable.extend(data_fut)
+
+    print(f"⚙️ Processing {len(raw_timetable)} total items...")
     processed_lessons = process_timetable(raw_timetable)
     
     # Setup Calendar
@@ -315,59 +326,39 @@ def sync_calendar():
     for lesson in processed_lessons:
         event = Event()
         
-        # Prepare sorted lists
         s_subjects = sorted(list(lesson.subjects))
         s_teachers = sorted(list(lesson.teachers))
         s_classes = sorted(list(lesson.classes))
         s_rooms = sorted(list(lesson.rooms))
         
-        # Summary
         summary = ', '.join(s_subjects) if s_subjects else 'Lesson'
-        if lesson.subst_text:
-            summary = f"{summary} ({lesson.subst_text})"
+        if lesson.subst_text: summary = f"{summary} ({lesson.subst_text})"
         
         event.add('summary', summary)
         event.add('dtstart', timezone.localize(lesson.start_dt))
         event.add('dtend', timezone.localize(lesson.end_dt))
         
-        # Description Construction
         description_parts = []
-        if s_teachers:
-            description_parts.append(' / '.join(s_teachers))
-        if s_classes:
-            description_parts.append(' / '.join(s_classes))
+        if s_teachers: description_parts.append(' / '.join(s_teachers))
+        if s_classes: description_parts.append(' / '.join(s_classes))
+        if lesson.lstext or lesson.info or lesson.subst_text: description_parts.append("-" * 20)
+        if lesson.lstext: description_parts.append(f"ℹ️ {lesson.lstext}")
+        if lesson.info: description_parts.append(f"📝 {lesson.info}")
+        if lesson.subst_text: description_parts.append(f"🔄 {lesson.subst_text}")
+            
+        if description_parts: event.add('description', '\n'.join(description_parts))
+        if s_rooms: event.add('location', ', '.join(s_rooms))
         
-        # Add a separator if there is info to display
-        if lesson.lstext or lesson.info or lesson.subst_text:
-            description_parts.append("-" * 20)
-            
-        # Add the 'Lesinformatie' (lstext) and other info
-        if lesson.lstext:
-            description_parts.append(f"ℹ️ {lesson.lstext}")
-        if lesson.info:
-            description_parts.append(f"📝 {lesson.info}")
-        if lesson.subst_text:
-            description_parts.append(f"🔄 {lesson.subst_text}")
-            
-        if description_parts:
-            event.add('description', '\n'.join(description_parts))
-            
-        # Location
-        if s_rooms:
-            event.add('location', ', '.join(s_rooms))
-            
-        # UID
+        # UID unique for sync
         uid = f"{lesson.id}-{lesson.date}-{lesson.start_time}@webuntis-sync"
         event.add('uid', uid)
-        
         cal.add_component(event)
     
-    # Save
     os.makedirs('docs', exist_ok=True)
     with open('docs/calendar.ics', 'wb') as f:
         f.write(cal.to_ical())
     
-    print(f"✅ Calendar synced: {len(processed_lessons)} events (merged from {len(raw_timetable)} items).")
+    print(f"✅ Calendar synced: {len(processed_lessons)} events.")
 
 if __name__ == '__main__':
     try:
