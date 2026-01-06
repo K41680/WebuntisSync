@@ -1601,4 +1601,31 @@ DESCRIPTION:Vanhulle\n1IT_IOT1\n--------------------\nℹ️ Theorie\, Lab
  o
 LOCATION:FICT.LES.MDI (50) Fictief Leslokaal
 END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Analysis
+DTSTART;TZID=Europe/Brussels:20260506T090000
+DTEND;TZID=Europe/Brussels:20260506T110000
+UID:496332-20260506-900@webuntis-sync
+DESCRIPTION:Van Eyken\n1IT_AI1 / 1IT_BUS uitdovend / 1IT_CSC1 / 1IT_CSC2 /
+  1IT_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2 / 1IT_SOF3\n--------
+ ------------\nℹ️ Theorie
+LOCATION:01.08_1.ELL (144) Auditorium 1\, 01.08_2.ELL (125) Auditorium 2\,
+  01.08_3.ELL (144) Auditorium 3
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Arduino interfacing
+DTSTART;TZID=Europe/Brussels:20260506T140000
+DTEND;TZID=Europe/Brussels:20260506T160000
+UID:499284-20260506-1400@webuntis-sync
+DESCRIPTION:Luyts\n1IT_IOT1\n--------------------\nℹ️ Theorie\, Labo
+LOCATION:01.19.ELL (21) Labo Elektronica en Elektriciteit
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Analysis
+DTSTART;TZID=Europe/Brussels:20260506T160000
+DTEND;TZID=Europe/Brussels:20260506T180000
+UID:1215936-20260506-1600@webuntis-sync
+DESCRIPTION:De Vries\n1IT_IOT1\n--------------------\nℹ️ Labo
+LOCATION:03.10.ELL (50) Leslokaal
+END:VEVENT
 END:VCALENDAR
