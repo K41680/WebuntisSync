@@ -1628,4 +1628,41 @@ UID:1215936-20260506-1600@webuntis-sync
 DESCRIPTION:De Vries\n1IT_IOT1\n--------------------\nℹ️ Labo
 LOCATION:03.10.ELL (50) Leslokaal
 END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Web programming
+DTSTART;TZID=Europe/Brussels:20260507T090000
+DTEND;TZID=Europe/Brussels:20260507T110000
+UID:522613-20260507-900@webuntis-sync
+DESCRIPTION:De Vos\n1IT_AI1 / 1IT_BUS uitdovend / 1IT_CSC1 / 1IT_CSC2 / 1I
+ T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2 / 1IT_SOF3\n-----------
+ ---------\nℹ️ Theorie
+LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
+ 4) Aula
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Arduino interfacing
+DTSTART;TZID=Europe/Brussels:20260507T110000
+DTEND;TZID=Europe/Brussels:20260507T130000
+UID:499290-20260507-1100@webuntis-sync
+DESCRIPTION:Luyts\n1IT_IOT1\n--------------------\nℹ️ Theorie\, Labo
+LOCATION:01.19.ELL (21) Labo Elektronica en Elektriciteit
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:C/C++ programming
+DTSTART;TZID=Europe/Brussels:20260507T140000
+DTEND;TZID=Europe/Brussels:20260507T160000
+UID:501036-20260507-1400@webuntis-sync
+DESCRIPTION:Luyckx\n1ITVTIOT1 / 1IT_IOT1\n--------------------\nℹ️ Lab
+ o\, Theorie
+LOCATION:02.01.ELL (87) Aula
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:C/C++ programming
+DTSTART;TZID=Europe/Brussels:20260507T160000
+DTEND;TZID=Europe/Brussels:20260507T180000
+UID:501042-20260507-1600@webuntis-sync
+DESCRIPTION:Luyckx\n1ITVTIOT1 / 1IT_IOT1\n--------------------\nℹ️ Lab
+ o\, Theorie
+LOCATION:03.08.ELL (40) Leslokaal
+END:VEVENT
 END:VCALENDAR
