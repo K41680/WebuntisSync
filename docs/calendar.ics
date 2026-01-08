@@ -4,33 +4,6 @@ PRODID:-//WebUntis Sync//webuntis-sync//EN
 X-WR-CALNAME:WebUntis Timetable
 X-WR-TIMEZONE:Europe/Brussels
 BEGIN:VEVENT
-SUMMARY:IoT experiments
-DTSTART;TZID=Europe/Brussels:20251208T090000
-DTEND;TZID=Europe/Brussels:20251208T110000
-UID:1208377-20251208-900@webuntis-sync
-DESCRIPTION:Luyts\n1IT3a / 1IT3b\n--------------------\nℹ️ Labo
-LOCATION:01.19.ELL (21) Labo Elektronica en Elektriciteit
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Linux
-DTSTART;TZID=Europe/Brussels:20251208T110000
-DTEND;TZID=Europe/Brussels:20251208T130000
-UID:1197505-20251208-1100@webuntis-sync
-DESCRIPTION:Vander Vennet\n1IT3a / 1IT3b\n--------------------\nℹ️ Lab
- o
-LOCATION:03.11.ELL (50) Leslokaal
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Open labo IT
-DTSTART;TZID=Europe/Brussels:20251208T160000
-DTEND;TZID=Europe/Brussels:20251208T180000
-UID:1142415-20251208-1600@webuntis-sync
-DESCRIPTION:Van Merode\n1IT1a / 1IT1b / 1IT2a / 1IT2b / 1IT3a / 1IT3b / 1I
- T4a / 1IT4b / 1IT5a / 1IT5b / 1IT6a / 1IT6b / 1IT7a / 1IT7b / 1IT8a / 1IT8
- b
-LOCATION:01.04.ELL (30) Embedded Elektronica
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:Web technology
 DTSTART;TZID=Europe/Brussels:20251209T090000
 DTEND;TZID=Europe/Brussels:20251209T110000
@@ -1664,5 +1637,32 @@ UID:501042-20260507-1600@webuntis-sync
 DESCRIPTION:Luyckx\n1ITVTIOT1 / 1IT_IOT1\n--------------------\nℹ️ Lab
  o\, Theorie
 LOCATION:03.08.ELL (40) Leslokaal
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Python OOP
+DTSTART;TZID=Europe/Brussels:20260508T090000
+DTEND;TZID=Europe/Brussels:20260508T110000
+UID:517206-20260508-900@webuntis-sync
+DESCRIPTION:Michiels\n1IT_AI1 / 1IT_CSC1 / 1IT_CSC2 / 1IT_CSC3 / 1IT_IOT1\
+ n--------------------\nℹ️ Theorie
+LOCATION:01.08_1.ELL (144) Auditorium 1\, 01.08_2.ELL (125) Auditorium 2\,
+  01.08_3.ELL (144) Auditorium 3
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Web programming
+DTSTART;TZID=Europe/Brussels:20260508T110000
+DTEND;TZID=Europe/Brussels:20260508T130000
+UID:523075-20260508-1100@webuntis-sync
+DESCRIPTION:Verhulst\n1IT_IOT1\n--------------------\nℹ️ Labo
+LOCATION:03.05.ELL (49) Leslokaal
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Electronics
+DTSTART;TZID=Europe/Brussels:20260508T140000
+DTEND;TZID=Europe/Brussels:20260508T170000
+UID:507122-20260508-1400@webuntis-sync
+DESCRIPTION:Vanhulle\n1IT_IOT1\n--------------------\nℹ️ Theorie\, Lab
+ o
+LOCATION:01.19.ELL (21) Labo Elektronica en Elektriciteit
 END:VEVENT
 END:VCALENDAR
