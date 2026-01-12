@@ -274,9 +274,9 @@ def sync_calendar():
     start_date_current = today - timedelta(days=60)
     end_date_current = switch_date
 
-    # Period 2: Switch Date -> Future (6 months)
+    # Period 2: Switch Date -> Future (5 months)
     start_date_future = switch_date
-    end_date_future = today + timedelta(days=180)
+    end_date_future = today + timedelta(days=155)
 
     raw_timetable = []
 
