@@ -838,10 +838,10 @@ BEGIN:VEVENT
 SUMMARY:Digital fundamentals
 DTSTART;TZID=Europe/Brussels:20260122T090000
 DTEND;TZID=Europe/Brussels:20260122T110000
-UID:1246044-20260122-900@webuntis-sync
-DESCRIPTION:Horsmans / Michiels / Van Loo / Van Merode\n1IT1a / 1IT1b / 1I
- T2a / 1IT2b / 1IT3a / 1IT3b / 1IT4a / 1IT4b / 1IT5a / 1IT5b / 1IT6a / 1IT6
- b\n--------------------\nℹ️ Digitaal kennis
+UID:1246092-20260122-900@webuntis-sync
+DESCRIPTION:Horsmans / Michiels / Van Battel / Van Merode\n1IT1a / 1IT1b /
+  1IT2a / 1IT2b / 1IT3a / 1IT3b / 1IT4a / 1IT4b / 1IT5a / 1IT5b / 1IT6a / 1
+ IT6b\n--------------------\nℹ️ Digitaal kennis
 LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
  4) Aula
 END:VEVENT
@@ -850,9 +850,9 @@ SUMMARY:Digital fundamentals
 DTSTART;TZID=Europe/Brussels:20260122T120000
 DTEND;TZID=Europe/Brussels:20260122T140000
 UID:1246062-20260122-1200@webuntis-sync
-DESCRIPTION:Horsmans / Michiels / Van Loo / Van Merode\n1IT1a / 1IT1b / 1I
- T2a / 1IT2b / 1IT3a / 1IT3b / 1IT4a / 1IT4b / 1IT5a / 1IT5b / 1IT6a / 1IT6
- b\n--------------------\nℹ️ Digitaal vaardigheid
+DESCRIPTION:Horsmans / Michiels / Van Battel / Van Merode\n1IT1a / 1IT1b /
+  1IT2a / 1IT2b / 1IT3a / 1IT3b / 1IT4a / 1IT4b / 1IT5a / 1IT5b / 1IT6a / 1
+ IT6b\n--------------------\nℹ️ Digitaal vaardigheid
 LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
  4) Aula
 END:VEVENT
