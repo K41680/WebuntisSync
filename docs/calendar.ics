@@ -899,10 +899,10 @@ BEGIN:VEVENT
 SUMMARY:Web programming
 DTSTART;TZID=Europe/Brussels:20260205T090000
 DTEND;TZID=Europe/Brussels:20260205T110000
-UID:522553-20260205-900@webuntis-sync
+UID:1328891-20260205-900@webuntis-sync
 DESCRIPTION:De Vos\n1IT_AI1 / 1IT_BUS uitdovend / 1IT_CSC1 / 1IT_CSC2 / 1I
- T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2 / 1IT_SOF3\n-----------
- ---------\nℹ️ Theorie
+ T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2\n--------------------\n
+ ℹ️ Theorie
 LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
  4) Aula
 END:VEVENT
@@ -1001,10 +1001,10 @@ BEGIN:VEVENT
 SUMMARY:Web programming
 DTSTART;TZID=Europe/Brussels:20260212T090000
 DTEND;TZID=Europe/Brussels:20260212T110000
-UID:522559-20260212-900@webuntis-sync
+UID:1328897-20260212-900@webuntis-sync
 DESCRIPTION:De Vos\n1IT_AI1 / 1IT_BUS uitdovend / 1IT_CSC1 / 1IT_CSC2 / 1I
- T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2 / 1IT_SOF3\n-----------
- ---------\nℹ️ Theorie
+ T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2\n--------------------\n
+ ℹ️ Theorie
 LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
  4) Aula
 END:VEVENT
@@ -1115,10 +1115,10 @@ BEGIN:VEVENT
 SUMMARY:Web programming
 DTSTART;TZID=Europe/Brussels:20260226T090000
 DTEND;TZID=Europe/Brussels:20260226T110000
-UID:522565-20260226-900@webuntis-sync
+UID:1328903-20260226-900@webuntis-sync
 DESCRIPTION:De Vos\n1IT_AI1 / 1IT_BUS uitdovend / 1IT_CSC1 / 1IT_CSC2 / 1I
- T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2 / 1IT_SOF3\n-----------
- ---------\nℹ️ Theorie
+ T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2\n--------------------\n
+ ℹ️ Theorie
 LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
  4) Aula
 END:VEVENT
@@ -1218,10 +1218,10 @@ BEGIN:VEVENT
 SUMMARY:Web programming
 DTSTART;TZID=Europe/Brussels:20260305T090000
 DTEND;TZID=Europe/Brussels:20260305T110000
-UID:522571-20260305-900@webuntis-sync
+UID:1328909-20260305-900@webuntis-sync
 DESCRIPTION:De Vos\n1IT_AI1 / 1IT_BUS uitdovend / 1IT_CSC1 / 1IT_CSC2 / 1I
- T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2 / 1IT_SOF3\n-----------
- ---------\nℹ️ Theorie
+ T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2\n--------------------\n
+ ℹ️ Theorie
 LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
  4) Aula
 END:VEVENT
@@ -1332,10 +1332,10 @@ BEGIN:VEVENT
 SUMMARY:Web programming
 DTSTART;TZID=Europe/Brussels:20260312T090000
 DTEND;TZID=Europe/Brussels:20260312T110000
-UID:522577-20260312-900@webuntis-sync
+UID:1328915-20260312-900@webuntis-sync
 DESCRIPTION:De Vos\n1IT_AI1 / 1IT_BUS uitdovend / 1IT_CSC1 / 1IT_CSC2 / 1I
- T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2 / 1IT_SOF3\n-----------
- ---------\nℹ️ Theorie
+ T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2\n--------------------\n
+ ℹ️ Theorie
 LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
  4) Aula
 END:VEVENT
@@ -1548,10 +1548,10 @@ BEGIN:VEVENT
 SUMMARY:Web programming
 DTSTART;TZID=Europe/Brussels:20260326T090000
 DTEND;TZID=Europe/Brussels:20260326T110000
-UID:522589-20260326-900@webuntis-sync
+UID:1328921-20260326-900@webuntis-sync
 DESCRIPTION:De Vos\n1IT_AI1 / 1IT_BUS uitdovend / 1IT_CSC1 / 1IT_CSC2 / 1I
- T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2 / 1IT_SOF3\n-----------
- ---------\nℹ️ Theorie
+ T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2\n--------------------\n
+ ℹ️ Theorie
 LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
  4) Aula
 END:VEVENT
@@ -1651,10 +1651,10 @@ BEGIN:VEVENT
 SUMMARY:Web programming
 DTSTART;TZID=Europe/Brussels:20260402T090000
 DTEND;TZID=Europe/Brussels:20260402T110000
-UID:522595-20260402-900@webuntis-sync
+UID:1328927-20260402-900@webuntis-sync
 DESCRIPTION:De Vos\n1IT_AI1 / 1IT_BUS uitdovend / 1IT_CSC1 / 1IT_CSC2 / 1I
- T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2 / 1IT_SOF3\n-----------
- ---------\nℹ️ Theorie
+ T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2\n--------------------\n
+ ℹ️ Theorie
 LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
  4) Aula
 END:VEVENT
@@ -1765,10 +1765,10 @@ BEGIN:VEVENT
 SUMMARY:Web programming
 DTSTART;TZID=Europe/Brussels:20260423T090000
 DTEND;TZID=Europe/Brussels:20260423T110000
-UID:522601-20260423-900@webuntis-sync
+UID:1328933-20260423-900@webuntis-sync
 DESCRIPTION:De Vos\n1IT_AI1 / 1IT_BUS uitdovend / 1IT_CSC1 / 1IT_CSC2 / 1I
- T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2 / 1IT_SOF3\n-----------
- ---------\nℹ️ Theorie
+ T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2\n--------------------\n
+ ℹ️ Theorie
 LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
  4) Aula
 END:VEVENT
@@ -1868,10 +1868,10 @@ BEGIN:VEVENT
 SUMMARY:Web programming
 DTSTART;TZID=Europe/Brussels:20260430T090000
 DTEND;TZID=Europe/Brussels:20260430T110000
-UID:522607-20260430-900@webuntis-sync
+UID:1328939-20260430-900@webuntis-sync
 DESCRIPTION:De Vos\n1IT_AI1 / 1IT_BUS uitdovend / 1IT_CSC1 / 1IT_CSC2 / 1I
- T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2 / 1IT_SOF3\n-----------
- ---------\nℹ️ Theorie
+ T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2\n--------------------\n
+ ℹ️ Theorie
 LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
  4) Aula
 END:VEVENT
@@ -1955,10 +1955,10 @@ BEGIN:VEVENT
 SUMMARY:Web programming
 DTSTART;TZID=Europe/Brussels:20260507T090000
 DTEND;TZID=Europe/Brussels:20260507T110000
-UID:522613-20260507-900@webuntis-sync
+UID:1328945-20260507-900@webuntis-sync
 DESCRIPTION:De Vos\n1IT_AI1 / 1IT_BUS uitdovend / 1IT_CSC1 / 1IT_CSC2 / 1I
- T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2 / 1IT_SOF3\n-----------
- ---------\nℹ️ Theorie
+ T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2\n--------------------\n
+ ℹ️ Theorie
 LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
  4) Aula
 END:VEVENT
@@ -2116,10 +2116,10 @@ BEGIN:VEVENT
 SUMMARY:Web programming
 DTSTART;TZID=Europe/Brussels:20260521T090000
 DTEND;TZID=Europe/Brussels:20260521T110000
-UID:522619-20260521-900@webuntis-sync
+UID:1328951-20260521-900@webuntis-sync
 DESCRIPTION:De Vos\n1IT_AI1 / 1IT_BUS uitdovend / 1IT_CSC1 / 1IT_CSC2 / 1I
- T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2 / 1IT_SOF3\n-----------
- ---------\nℹ️ Theorie
+ T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2\n--------------------\n
+ ℹ️ Theorie
 LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
  4) Aula
 END:VEVENT
@@ -2204,10 +2204,10 @@ BEGIN:VEVENT
 SUMMARY:Web programming
 DTSTART;TZID=Europe/Brussels:20260528T090000
 DTEND;TZID=Europe/Brussels:20260528T110000
-UID:522625-20260528-900@webuntis-sync
+UID:1328957-20260528-900@webuntis-sync
 DESCRIPTION:De Vos\n1IT_AI1 / 1IT_BUS uitdovend / 1IT_CSC1 / 1IT_CSC2 / 1I
- T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2 / 1IT_SOF3\n-----------
- ---------\nℹ️ Theorie
+ T_CSC3 / 1IT_IMT1 / 1IT_IOT1 / 1IT_SOF1 / 1IT_SOF2\n--------------------\n
+ ℹ️ Theorie
 LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
  4) Aula
 END:VEVENT
