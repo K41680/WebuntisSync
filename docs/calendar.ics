@@ -4,27 +4,6 @@ PRODID:-//WebUntis Sync//webuntis-sync//EN
 X-WR-CALNAME:WebUntis Timetable
 X-WR-TIMEZONE:Europe/Brussels
 BEGIN:VEVENT
-SUMMARY:Discover IT
-DTSTART;TZID=Europe/Brussels:20251117T140000
-DTEND;TZID=Europe/Brussels:20251117T160000
-UID:506321-20251117-1400@webuntis-sync
-DESCRIPTION:Binnemans / Van Eyken\n1IT1a / 1IT1b / 1IT2a / 1IT2b / 1IT3a /
-  1IT3b / 1IT4a / 1IT4b / 1IT5a / 1IT5b / 1IT6a / 1IT6b / 1IT7a / 1IT7b / 1
- IT8a\n--------------------\nℹ️ Theorie
-LOCATION:01.08_1.ELL (144) Aula\, 01.08_2.ELL (125) Aula\, 01.08_3.ELL (14
- 4) Aula
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Open labo IT
-DTSTART;TZID=Europe/Brussels:20251117T160000
-DTEND;TZID=Europe/Brussels:20251117T180000
-UID:1142397-20251117-1600@webuntis-sync
-DESCRIPTION:Van Merode\n1IT1a / 1IT1b / 1IT2a / 1IT2b / 1IT3a / 1IT3b / 1I
- T4a / 1IT4b / 1IT5a / 1IT5b / 1IT6a / 1IT6b / 1IT7a / 1IT7b / 1IT8a / 1IT8
- b
-LOCATION:01.04.ELL (30) Embedded Elektronica
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:Web technology
 DTSTART;TZID=Europe/Brussels:20251118T090000
 DTEND;TZID=Europe/Brussels:20251118T110000
